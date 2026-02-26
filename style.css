@@ -206,7 +206,9 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
 .proj-thumbnails { display: flex; flex-direction: column; gap: 1.5rem; width: 320px; flex-shrink: 0; }
 .thumb-card {
     display: flex; align-items: center; gap: 1rem; padding: 10px; border-radius: 16px; cursor: none;
-    background: var(--card-bg); border: 1px solid var(--card-border); backdrop-filter: blur(16px);
+    background: var(--card-bg); border: 1px solid var(--card-border); 
+    backdrop-filter: blur(16px); 
+    -webkit-backdrop-filter: blur(16px); /* Fixes the Safari warning! */
     transition: all 0.4s ease; position: relative; overflow: hidden;
 }
 .thumb-img { width: 80px; height: 80px; border-radius: 12px; background-size: cover; background-position: center; transition: transform 0.4s ease; }
