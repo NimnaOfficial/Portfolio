@@ -9,13 +9,13 @@ An elite, high-performance personal portfolio website built to showcase full-sta
 
 This project features **zero external dependencies** or bloated libraries, relying entirely on advanced Vanilla CSS and JavaScript to achieve complex 3D DOM physics, custom cursors, and immersive rendering.
 
-**🔗 [View Live Portfolio Here](https://nimnaofficial.github.io/Portfolio/)
+ 🔗 [View Live Portfolio Here](https://nimnaofficial.github.io/Portfolio/) 
 
 ---
 
 ## 🚀 Key Features & UI/UX Highlights
 
-This portfolio steps away from standard web templates to utilize modern, Awwwards-winning design patterns and high-end interactive physics:
+This portfolio steps away from standard web templates to utilize modern, Awards-winning design patterns and high-end interactive physics:
 
 * **Immersive Vertical Project Carousel:** A custom-engineered, full-screen project slider with crossfading background images, dynamic data injection, and continuous CSS scaling effects.
 * **3D Mouse-Tracking Physics:** The "About Me" glassmorphism card calculates mouse positioning via JavaScript to apply a dynamic 10-degree `rotateX` and `rotateY` tilt effect in 3D space.
