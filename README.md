@@ -28,15 +28,6 @@ This portfolio steps away from standard web templates to utilize modern, Awards-
 
 ---
 
-## 💼 Featured Engineering Projects
-
-The portfolio dynamically showcases several core software architectures:
-1.  **Lanka Washing System:** A hybrid Java & PHP application handling 500+ database queries efficiently, featuring 15+ custom-designed UI screens.
-2.  **Resource Management System:** Engineered with 20+ functional modules for production workflow optimization, integrated with JasperReports for real-time data analytics.
-3.  **AI & Data Science Pipelines:** Python-based AI/ML concepts, predictive modeling, and neural network experimentation.
-
----
-
 ## 🛠️ Technology Stack
 
 * **Structure:** Semantic HTML5
