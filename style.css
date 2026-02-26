@@ -302,3 +302,28 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
     .cursor-dot, .cursor-outline { display: none; /* Hide custom cursor on mobile touch screens */ }
     * { cursor: auto !important; }
 }
+
+/* --- PROJECT ACTION BUTTONS --- */
+.proj-action-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--text-main);
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--card-border);
+    cursor: none; /* Crucial for your custom liquid cursor to work */
+    transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease, transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+}

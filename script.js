@@ -116,21 +116,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- 6. VERTICAL PROJECT CAROUSEL ---
+    
     const projectDatabase = [
         {
             title: "Lanka Washing System",
             desc: "A hybrid application handling 500+ database queries efficiently. Designed and implemented 15+ UI screens to ensure a smooth, seamless user experience.",
-            tags: ["Java", "PHP", "UI/UX"]
+            tags: ["Java", "PHP", "UI/UX"],
+            repoLink: "https://github.com/NimnaOfficial/Lanka-Washing-System",
+            liveLink: "https://lankawashing.infinityfree.me/" // Triggers the Visit Website button
         },
         {
-            title: "Resource Mgmt System",
-            desc: "Designed 20+ functional modules for production workflow optimization. Successfully integrated JasperReports for real-time reporting and data analytics.",
-            tags: ["JasperReports", "Backend", "SQL"]
+            title: "Smart Crop Supply Mgmt",
+            desc: "About Smart Crop Supply Management System is a Java desktop application for managing farmers, crops, inventory, buyer requests, and reports using a role-based system with MySQL integration.",
+            tags: ["JasperReports", "Backend", "SQL"],
+            repoLink: "https://github.com/NimnaOfficial/SmartCropSupplyManagementSystem",
+            liveLink: "" // Empty string means the button will hide
         },
         {
             title: "AI & Data Science",
-            desc: "Hands-on experimentation with Python-based AI/ML concepts. Built predictive models, data analysis pipelines, and basic neural networks.",
-            tags: ["Python", "Machine Learning", "Data Science"]
+            desc: "Hands-on experimentation with Python-based AI/ML concepts. Built predictive models, data analysis pipelines, and basic neural networks. (COMING SOON)",
+            tags: ["Python", "Machine Learning", "Data Science"],
+            repoLink: "",
+            liveLink: "" // Empty string means the button will hide
+        },
+        {
+            title: "Auto Parts Online",
+            desc: "AutoHub is a responsive e-commerce platform delivering premium auto parts in Sri Lanka. It combines an intuitive UI/UX with a secure PHP backend for a seamless shopping experience.",
+            tags: ["HTML", "CSS", "JS", "PHP"],
+            repoLink: "https://github.com/NimnaOfficial/AutoPartsOnline",
+            liveLink: "https://autopartsonlinex.infinityfree.me/" 
         }
     ];
 
@@ -140,6 +154,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const projDesc = document.getElementById('proj-desc');
     const projTags = document.getElementById('proj-tags');
     const infoWrapper = document.querySelector('.proj-info-wrapper');
+    
+    // Grab the new buttons
+    const repoBtn = document.getElementById('proj-repo-btn');
+    const liveBtn = document.getElementById('proj-live-btn');
 
     if(infoWrapper) infoWrapper.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
 
@@ -154,21 +172,43 @@ document.addEventListener("DOMContentLoaded", () => {
             this.classList.add('active');
             bgLayers[index].classList.add('active');
 
+            // Fade out current text
             infoWrapper.style.opacity = '0';
             infoWrapper.style.transform = 'translateY(20px)';
             
             setTimeout(() => {
-                projTitle.textContent = projectDatabase[index].title;
-                projDesc.textContent = projectDatabase[index].desc;
+                const currentProject = projectDatabase[index];
                 
+                // Update text
+                projTitle.textContent = currentProject.title;
+                projDesc.textContent = currentProject.desc;
+                
+                // Update tags
                 projTags.innerHTML = '';
-                projectDatabase[index].tags.forEach(tagText => {
+                currentProject.tags.forEach(tagText => {
                     const span = document.createElement('span');
                     span.classList.add('tag');
                     span.textContent = tagText;
                     projTags.appendChild(span);
                 });
 
+                // Update Repo Button Visibility
+                if (currentProject.repoLink) {
+                    repoBtn.href = currentProject.repoLink;
+                    repoBtn.style.display = 'inline-block';
+                } else {
+                    repoBtn.style.display = 'none';
+                }
+
+                // Update Live Button Visibility
+                if (currentProject.liveLink) {
+                    liveBtn.href = currentProject.liveLink;
+                    liveBtn.style.display = 'inline-block';
+                } else {
+                    liveBtn.style.display = 'none';
+                }
+
+                // Fade back in
                 infoWrapper.style.opacity = '1';
                 infoWrapper.style.transform = 'translateY(0)';
             }, 400); 
