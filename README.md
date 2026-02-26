@@ -45,6 +45,7 @@ This portfolio steps away from standard web templates to utilize modern, Awards-
 ├── script.js        # DOM interaction, 3D math, observers, and carousel logic
 └── README.md        # Project documentation
 ```
+---
 
 ## ⚙️ Setup & Installation
 
@@ -60,6 +61,8 @@ Because this project uses vanilla web technologies without a build step or packa
    ```
 3. **Run the site:**
    Simply double-click <code>index.html</code> to open it in your browser, or use a tool like VS Code's Live Server extension for hot-reloading.
+
+---
 
 ## 🔧 Configuration Guide
 
@@ -78,10 +81,13 @@ Because this project uses vanilla web technologies without a build step or packa
 2. **Updating the Contact Form**
    The contact form is configured to send submissions directly to <code>lochsand2022@gmail.com</code>. If you fork this repo, replace the hidden <code>access_key</code> input in <code>index.html</code> with your own key from Web3Forms:
 
+---
+
 ## 📬 Contact & Links
    * Developer: K.G.L Sandanimne (Nimna)
    * Email: lochsand2022@gmail.com
    * GitHub: @NimnaOfficial
-
+     
+---
 ##
 > Designed and Engineered by K.G.L Sandanimne. Western Province, Sri Lanka.
