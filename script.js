@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (char === ' ') {
                         heroText.innerHTML += ' ';
                     } else {
-                        heroText.innerHTML += `<span class="char-span" style="transition-delay: ${charIndex * 0.03}s">${char}</span>`;
+                        heroText.innerHTML += `<span class="char-span" style="transition-delay: ${charIndex * 0.11}s">${char}</span>`;
                         charIndex++;
                     }
                 });
@@ -274,9 +274,17 @@ document.addEventListener("DOMContentLoaded", () => {
             reset() {
                 this.angle = Math.random() * Math.PI * 2;
                 this.radius = Math.random() * 100;
-                this.speed = Math.random() * 1.5 + 0.5;
+                
+                // 👇 1. SLOWED DOWN INITIAL SPEED
+                // Changed from (Math.random() * 1.5 + 0.5) to a much gentler speed
+                this.speed = Math.random() * 0.6 + 0.2; 
+                
                 this.size = Math.random() * 2 + 0.5;
-                this.spin = (Math.random() - 0.5) * 0.01;
+                
+                // 👇 2. SLOWED DOWN ROTATION SPIN
+                // Changed from 0.01 to 0.005 for a smoother, slower rotation
+                this.spin = (Math.random() - 0.5) * 0.005; 
+                
                 this.x = 0; 
                 this.y = 0;
             }
@@ -284,7 +292,10 @@ document.addEventListener("DOMContentLoaded", () => {
             update() {
                 this.radius += this.speed;
                 this.angle += this.spin;
-                this.speed *= 1.015;
+                
+                // 👇 3. REDUCED ACCELERATION
+                // Changed from 1.015 to 1.005 so they don't speed up too aggressively as they move outward
+                this.speed *= 1.005;
 
                 const centerX = width / 2;
                 const centerY = height / 2;
