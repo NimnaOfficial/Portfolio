@@ -147,7 +147,7 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
     padding: 0 5%; position: relative;
 }
 .huge-text { 
-    font-size: clamp(2.5rem, 8vw, 7rem); 
+    font-size: clamp(2.5rem, 7vw, 7rem); 
     font-weight: 800; line-height: 1; letter-spacing: -2px; 
     margin-bottom: 2rem; z-index: 2; width: 100%; 
     white-space: nowrap; text-align: center; padding: 0 1rem; 
@@ -388,9 +388,35 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
     z-index: -2; pointer-events: none; opacity: 0.8;
 }
 
+/* --- ANTIGRAVITY BACKGROUND & TYPEWRITER --- */
+.antigravity-bg {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -2; pointer-events: none; opacity: 0.8;
+}
+
 .char-span {
     opacity: 0; transform: translateY(10px); display: inline-block;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    /* Quick snap-in transition so it feels like a real keyboard typing */
+    transition: opacity 0.2s ease, transform 0.2s ease; 
 }
 
 .char-span.revealed { opacity: 1; transform: translateY(0); }
+
+/* 🔥 THE NEW ACCENT-COLORED BLINKING CURSOR 🔥 */
+.type-cursor {
+    color: var(--accent); /* Uses your exact purple theme color */
+    font-weight: 800;
+    display: inline-block;
+    margin-left: 2px;
+    opacity: 1;
+}
+
+/* The blink animation starts AFTER it finishes typing */
+.type-cursor.blinking {
+    animation: blinkCursor 0.9s step-end infinite;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}

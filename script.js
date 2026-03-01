@@ -237,35 +237,80 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll('.reveal-up, .reveal-fade').forEach(el => scrollObserver.observe(el));
 
-    // --- 8. ANTIGRAVITY TEXT REVEAL (ELEGANT TYPEWRITER) ---
+    // --- 8. ANTIGRAVITY TEXT REVEAL (DYNAMIC CURSOR TYPEWRITER) ---
     const heroText = document.getElementById('hero-text');
     if (heroText) {
-        const htmlContent = heroText.innerHTML;
-        heroText.innerHTML = '';
-        const parts = htmlContent.split(/(<[^>]*>)/g);
+        const rawHTML = heroText.innerHTML;
+        heroText.innerHTML = ''; // Clear the initial text
         
-        let charIndex = 0;
+        // Create containers for the text and the cursor
+        const textContainer = document.createElement('span');
+        const cursorSpan = document.createElement('span');
+        
+        cursorSpan.classList.add('type-cursor');
+        cursorSpan.textContent = '_'; // Your colored underscore
+        
+        heroText.appendChild(textContainer);
+        heroText.appendChild(cursorSpan);
+
+        // Break the HTML string into tags and individual characters
+        const parts = rawHTML.split(/(<[^>]*>)/g);
+        let allChars = [];
+        
         parts.forEach(part => {
             if (part.startsWith('<')) {
-                heroText.innerHTML += part;
+                allChars.push({ type: 'tag', content: part });
             } else {
                 const chars = part.split('');
                 chars.forEach(char => {
-                    if (char === ' ') {
-                        heroText.innerHTML += ' ';
-                    } else {
-                        heroText.innerHTML += `<span class="char-span" style="transition-delay: ${charIndex * 0.1}s">${char}</span>`;
-                        charIndex++;
-                    }
+                    allChars.push({ type: 'char', content: char });
                 });
             }
         });
 
-        setTimeout(() => {
-            document.querySelectorAll('.char-span').forEach(span => {
-                span.classList.add('revealed');
-            });
-        }, 300);
+        let currentIndex = 0;
+        
+        function typeNext() {
+            if (currentIndex < allChars.length) {
+                const current = allChars[currentIndex];
+                
+                // If it's a <br> tag, insert it instantly
+                if (current.type === 'tag') {
+                    const temp = document.createElement('div');
+                    temp.innerHTML = current.content;
+                    while(temp.firstChild) {
+                        textContainer.appendChild(temp.firstChild);
+                    }
+                    setTimeout(typeNext, 0);
+                } 
+                // If it's a space, insert it instantly
+                else if (current.content === ' ') {
+                    textContainer.appendChild(document.createTextNode(' '));
+                    setTimeout(typeNext, 0);
+                } 
+                // If it's a letter, type it out with the animation
+                else {
+                    const charSpan = document.createElement('span');
+                    charSpan.classList.add('char-span');
+                    charSpan.textContent = current.content;
+                    textContainer.appendChild(charSpan);
+                    
+                    // Trigger the CSS fade-in
+                    setTimeout(() => {
+                        charSpan.classList.add('revealed');
+                    }, 10);
+                    
+                    setTimeout(typeNext, 160); // Typing speed (90ms per letter)
+                }
+                currentIndex++;
+            } else {
+                // When finished typing, make the cursor blink infinitely
+                cursorSpan.classList.add('blinking');
+            }
+        }
+
+        // Start the typing animation half a second after the page loads
+        setTimeout(typeNext, 500);
     }
 
     // --- 9. RADIATING PARTICLE VORTEX (SLOWED DOWN AMBIENT) ---
@@ -295,10 +340,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.angle = Math.random() * Math.PI * 2;
                 this.radius = Math.random() * 100;
                 
-                this.speed = Math.random() * 0.6 + 0.2; 
+                // 🔥 1. DRASTICALLY SLOWED Base Speed 
+                // Was: Math.random() * 0.6 + 0.2
+                this.speed = Math.random() * 0.15 + 0.05; 
+                
                 this.size = Math.random() * 2 + 0.5;
                 
-                this.spin = (Math.random() - 0.5) * 0.005; 
+                // 🔥 2. SLOWED Rotation (Spin)
+                // Was: (Math.random() - 0.5) * 0.005
+                this.spin = (Math.random() - 0.5) * 0.0015; 
+                
                 this.x = 0; 
                 this.y = 0;
             }
@@ -307,7 +358,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.radius += this.speed;
                 this.angle += this.spin;
                 
-                this.speed *= 1.005;
+                // 🔥 3. REMOVED Aggressive Acceleration
+                // Was: this.speed *= 1.005 (which makes them speed up exponentially)
+                this.speed *= 1.002; 
 
                 const centerX = width / 2;
                 const centerY = height / 2;
@@ -321,8 +374,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (distance < mouse.radius) {
                     let force = (mouse.radius - distance) / mouse.radius;
-                    targetX -= (dx / distance) * force * 40;
-                    targetY -= (dy / distance) * force * 40;
+                    // 🔥 4. SOFTER Mouse Repulsion
+                    // Was: force * 40
+                    targetX -= (dx / distance) * force * 15;
+                    targetY -= (dy / distance) * force * 15;
                 }
 
                 this.x = targetX;
