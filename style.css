@@ -309,11 +309,16 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
     opacity: 0;
     transform: translateY(10px);
     display: inline-block;
-    /* 👇 CHANGED 0.1s to 0.4s for a smoother, slower fade-in */
-    transition: opacity 0.4s ease, transform 0.4s ease; 
+
+
+    transition: opacity 0.1s ease, transform 0.1s ease;
+
 }
 
 .char-span.revealed {
     opacity: 1;
     transform: translateY(0);
+
+
 }
+

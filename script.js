@@ -355,4 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
         animateCanvas();
         window.addEventListener('resize', initCanvas);
     }
+
+
 });
+
