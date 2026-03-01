@@ -72,7 +72,9 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
     padding: 1.5rem 5%; z-index: 1001; transition: all 0.4s ease;
 }
 .navbar.scrolled {
-    background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    background: var(--nav-bg); 
+    -webkit-backdrop-filter: blur(12px); /* Linter Prefix Fix */
+    backdrop-filter: blur(12px); 
     border-bottom: 1px solid var(--card-border);
 }
 .nav-logo { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: var(--text-main); letter-spacing: -1px; }
@@ -101,7 +103,9 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
 /* FLOATING MOBILE MENU */
 .mobile-menu {
     position: fixed; top: 80px; left: 5%; width: 90%; height: auto;
-    background: var(--nav-bg); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    background: var(--nav-bg); 
+    -webkit-backdrop-filter: blur(24px); /* Linter Prefix Fix */
+    backdrop-filter: blur(24px); 
     border: 1px solid var(--card-border); border-radius: 24px;
     padding: 2.5rem; z-index: 1000; opacity: 0; pointer-events: none;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -171,14 +175,19 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
     font-size: clamp(4rem, 10vw, 8rem); color: transparent;
     -webkit-text-stroke: 2px rgba(255,255,255,0.2); margin-bottom: -40px; position: relative; z-index: 1;
     background: linear-gradient(90deg, #ff6b6b, #8b5cf6, #92EFFD, #ff6b6b);
-    background-size: 300% auto; background-clip: text; -webkit-background-clip: text; transition: all 0.5s ease;
+    background-size: 300% auto; 
+    -webkit-background-clip: text; /* Linter Prefix Fix */
+    background-clip: text; 
+    transition: all 0.5s ease;
 }
 [data-theme="light"] .hollow-text { -webkit-text-stroke: 2px rgba(0,0,0,0.1); }
 .about-section:hover .hollow-text { -webkit-text-stroke: 0px transparent; color: transparent; animation: textFlow 4s linear infinite; }
 @keyframes textFlow { to { background-position: 300% center; } }
 
 .about-content {
-    background: rgba(24, 24, 27, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    background: rgba(24, 24, 27, 0.8); 
+    -webkit-backdrop-filter: blur(10px); /* Linter Prefix Fix */
+    backdrop-filter: blur(10px); 
     padding: 40px; border-radius: 24px; max-width: 800px; margin: 0 auto;
     position: relative; z-index: 2; border: 1px solid rgba(255,255,255,0.05);
     transform-style: preserve-3d; transition: transform 0.1s ease, box-shadow 0.3s ease;
@@ -229,7 +238,8 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
 .thumb-card {
     display: flex; align-items: center; gap: 1rem; padding: 10px; border-radius: 16px; cursor: none;
     background: var(--card-bg); border: 1px solid var(--card-border); 
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px); /* Linter Prefix Fix */
+    backdrop-filter: blur(16px); 
     transition: all 0.4s ease; position: relative; overflow: hidden;
 }
 .thumb-img { width: 80px; height: 80px; border-radius: 12px; background-size: cover; background-position: center; transition: transform 0.4s ease; }
@@ -259,7 +269,14 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
 .info-block a:hover { color: var(--accent); }
 .social-links-small { display: flex; flex-direction: column; gap: 0.5rem; }
 .massive-email-container { text-align: center; margin-bottom: -50px; position: relative; z-index: 2; }
-.massive-email { font-size: clamp(2rem, 5vw, 5rem); font-weight: 800; background: linear-gradient(135deg, #ff6b6b, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -2px; word-break: break-all; }
+.massive-email { 
+    font-size: clamp(2rem, 5vw, 5rem); font-weight: 800; 
+    background: linear-gradient(135deg, #ff6b6b, var(--accent)); 
+    -webkit-background-clip: text; /* Linter Prefix Fix */
+    background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    letter-spacing: -2px; word-break: break-all; 
+}
 .map-form-container { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 50px; }
 .map-wrapper { width: 100%; height: 600px; filter: grayscale(100%) invert(90%) contrast(120%); opacity: 0.6; transition: filter 0.5s; }
 [data-theme="light"] .map-wrapper { filter: grayscale(100%) contrast(100%); opacity: 0.8; }
@@ -329,11 +346,11 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
     
     /* Hero Text Mobile Override */
     .huge-text { 
-        font-size: 7vw; /* Math ensures 10 letters fit perfectly */
+        font-size: 11.5vw; /* Math ensures 10 letters fit perfectly without word breaks */
         letter-spacing: 0px; 
         padding: 0 10px; 
         white-space: nowrap;
-        text-align: center; /* PERFECT ALIGNMENT */
+        text-align: center; 
     }
 
     /* ABOUT SECTION CENTERING */
@@ -341,10 +358,10 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
 
     /* ACCORDION MOBILE TWEAKS */
     .accordion { 
-        padding: 0 1.5rem; /* 🔥 THE FIX: Pushes the entire accordion away from the screen edges */
+        padding: 0 1.5rem; 
     }
     .accordion-header {
-        padding: 1.5rem 0; /* Slightly tighter vertical spacing for mobile */
+        padding: 1.5rem 0; 
     }
     .accordion-header h3 { 
         font-size: 1.15rem; 
@@ -364,16 +381,16 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
     .thumb-card { min-width: 250px; scroll-snap-align: center; }
     .thumb-card.active { transform: translateY(-10px) scale(1.05); }
     
-    /* 🔥 CONTACT SECTION CENTERING FIX 🔥 */
+    /* CONTACT SECTION CENTERING FIX */
     .contact-top-grid { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
-    .contact-right { grid-template-columns: 1fr; gap: 2rem; } /* Stacks Info blocks */
-    .info-block { display: flex; flex-direction: column; align-items: center; } /* Centers inner items */
+    .contact-right { grid-template-columns: 1fr; gap: 2rem; } 
+    .info-block { display: flex; flex-direction: column; align-items: center; } 
     .social-links-small { align-items: center; }
     
     .input-row { flex-direction: column; gap: 0; }
     .form-overlap-card { padding: 3rem 5%; width: 95%; margin-top: -100px; text-align: center; }
     
-    /* 🔥 FOOTER CENTERING FIX 🔥 */
+    /* FOOTER CENTERING FIX */
     .footer-col { text-align: center; }
     .footer-social-pills { align-items: center; }
 
@@ -388,30 +405,22 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
     z-index: -2; pointer-events: none; opacity: 0.8;
 }
 
-/* --- ANTIGRAVITY BACKGROUND & TYPEWRITER --- */
-.antigravity-bg {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    z-index: -2; pointer-events: none; opacity: 0.8;
-}
-
 .char-span {
     opacity: 0; transform: translateY(10px); display: inline-block;
-    /* Quick snap-in transition so it feels like a real keyboard typing */
     transition: opacity 0.2s ease, transform 0.2s ease; 
 }
 
 .char-span.revealed { opacity: 1; transform: translateY(0); }
 
-/* 🔥 THE NEW ACCENT-COLORED BLINKING CURSOR 🔥 */
+/* 🔥 THE ACCENT-COLORED BLINKING CURSOR 🔥 */
 .type-cursor {
-    color: var(--accent); /* Uses your exact purple theme color */
+    color: var(--accent); 
     font-weight: 800;
     display: inline-block;
     margin-left: 2px;
     opacity: 1;
 }
 
-/* The blink animation starts AFTER it finishes typing */
 .type-cursor.blinking {
     animation: blinkCursor 0.9s step-end infinite;
 }
@@ -420,3 +429,18 @@ h1, h2, h3, .nav-logo { font-family: 'Syne', sans-serif; }
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
+
+/* --- LINTER FIXES: EXTRACTED INLINE STYLES --- */
+.bg-proj-1 { background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1920'); }
+.bg-proj-2 { background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1920'); }
+.bg-proj-3 { background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1920'); }
+.bg-proj-4 { background-image: url('https://i.ibb.co/FqqrV4Nq/autohub.png'); }
+
+.bg-thumb-1 { background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800'); }
+.bg-thumb-2 { background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800'); }
+.bg-thumb-3 { background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800'); }
+.bg-thumb-4 { background-image: url('https://i.ibb.co/FqqrV4Nq/autohub.png'); }
+
+.hidden-btn { display: none; }
+.map-iframe { border: 0; }
+.footer-email-link { color: inherit; text-decoration: none; cursor: none; }
