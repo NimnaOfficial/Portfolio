@@ -41,12 +41,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- 2. STICKY NAVBAR ---
+    // --- 2. STICKY NAVBAR & MOBILE MENU TOGGLE ---
     const navbar = document.getElementById('navbar');
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) navbar.classList.add('scrolled');
         else navbar.classList.remove('scrolled');
     });
+
+    // Toggle Floating Glass Menu
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu cleanly when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+    }
 
     // --- 3. MAGNETIC BUTTON FIX ---
     const magneticBtns = document.querySelectorAll('.magnetic-btn');
@@ -217,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll('.reveal-up, .reveal-fade').forEach(el => scrollObserver.observe(el));
 
-    // --- 8. ANTIGRAVITY TEXT REVEAL (Typewriter Effect) ---
+    // --- 8. ANTIGRAVITY TEXT REVEAL (ELEGANT TYPEWRITER) ---
     const heroText = document.getElementById('hero-text');
     if (heroText) {
         const htmlContent = heroText.innerHTML;
@@ -234,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (char === ' ') {
                         heroText.innerHTML += ' ';
                     } else {
-                        heroText.innerHTML += `<span class="char-span" style="transition-delay: ${charIndex * 0.11}s">${char}</span>`;
+                        heroText.innerHTML += `<span class="char-span" style="transition-delay: ${charIndex * 0.1}s">${char}</span>`;
                         charIndex++;
                     }
                 });
@@ -248,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 300);
     }
 
-    // --- 9. RADIATING PARTICLE VORTEX (The "Liftoff" Background) ---
+    // --- 9. RADIATING PARTICLE VORTEX (SLOWED DOWN AMBIENT) ---
     const canvas = document.getElementById('antigravity-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
@@ -275,16 +295,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.angle = Math.random() * Math.PI * 2;
                 this.radius = Math.random() * 100;
                 
-                // 👇 1. SLOWED DOWN INITIAL SPEED
-                // Changed from (Math.random() * 1.5 + 0.5) to a much gentler speed
                 this.speed = Math.random() * 0.6 + 0.2; 
-                
                 this.size = Math.random() * 2 + 0.5;
                 
-                // 👇 2. SLOWED DOWN ROTATION SPIN
-                // Changed from 0.01 to 0.005 for a smoother, slower rotation
                 this.spin = (Math.random() - 0.5) * 0.005; 
-                
                 this.x = 0; 
                 this.y = 0;
             }
@@ -293,8 +307,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.radius += this.speed;
                 this.angle += this.spin;
                 
-                // 👇 3. REDUCED ACCELERATION
-                // Changed from 1.015 to 1.005 so they don't speed up too aggressively as they move outward
                 this.speed *= 1.005;
 
                 const centerX = width / 2;
@@ -355,7 +367,4 @@ document.addEventListener("DOMContentLoaded", () => {
         animateCanvas();
         window.addEventListener('resize', initCanvas);
     }
-
-
 });
-
